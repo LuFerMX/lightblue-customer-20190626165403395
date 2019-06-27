@@ -140,8 +140,8 @@ public class CustomerController {
             final Response resp = cloudant.save(payload);
             
             if (resp.getError() == null) {
-		final URI location =  ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resp.getId()).toUri();
-		return ResponseEntity.created(location).build();
+				final URI location =  ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(resp.getId()).toUri();
+				return ResponseEntity.created(location).build();
             } else {
             	return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(resp.getError());
             }
